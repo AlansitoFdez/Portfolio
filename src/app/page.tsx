@@ -2,6 +2,7 @@ import Hero from "@/components/ui/Hero";
 import Navbar from "@/components/ui/Navbar";
 import About from "@/components/ui/About";
 import Projects from "@/components/ui/Projects";
+import Skills from "@/components/ui/Skills";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
+      <Skills />
     </main>
   );
 }
