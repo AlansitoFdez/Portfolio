@@ -50,7 +50,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="rounded-lg border border-white/20 px-6 py-3 font-medium text-white transition-colors hover:border-violet-400/60 hover:bg-white/5 active:scale-[0.98]"
+            className="rounded-lg border border-white/10 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-violet-400/60 hover:text-white active:scale-[0.98]"
           >
             Hablemos
           </a>
