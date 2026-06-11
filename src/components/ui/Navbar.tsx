@@ -15,8 +15,8 @@ export default function Navbar() {
         logoAlt="Alan Fernández Diosdado"
         items={items}
         homeHref="#hero"
-        baseColor="#3f2d5c"
-        pillColor="#18181b"
+        baseColor="#7c3aed"
+        pillColor="#0f0f0f"
         pillTextColor="#a1a1aa"
         hoveredPillTextColor="#ffffff"
       />
