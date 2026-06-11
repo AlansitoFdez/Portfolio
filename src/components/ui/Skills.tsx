@@ -7,21 +7,23 @@ const skills = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12">Skills</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category}>
-              <h3 className="text-violet-400 font-semibold mb-4 text-sm uppercase tracking-widest">
+    <section id="skills" className="px-6 py-24">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="animate-fade-up text-3xl font-bold tracking-tight md:text-4xl">Skills</h2>
+
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {Object.entries(skills).map(([category, items], index) => (
+            <div
+              key={category}
+              className="animate-fade-up rounded-xl border border-white/10 bg-white/5 p-5"
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-violet-400">
                 {category}
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-white/5 border border-white/10 text-gray-300 text-sm px-3 py-1.5 rounded-lg"
-                  >
+                  <span key={skill} className="rounded-md bg-white/5 px-2 py-1 text-xs text-gray-300">
                     {skill}
                   </span>
                 ))}
