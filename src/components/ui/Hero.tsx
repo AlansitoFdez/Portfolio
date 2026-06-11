@@ -1,9 +1,9 @@
-import { ArrowRight, GithubLogo, LinkedinLogo, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr"
+import { ArrowRightIcon, GithubLogoIcon, LinkedinLogoIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr"
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogo },
-  { label: "LinkedIn", href: "https://linkedin.com/in/alanfdez-dev", icon: LinkedinLogo },
-  { label: "Email", href: "mailto:alanfdiosdado@gmail.com", icon: EnvelopeSimple },
+  { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogoIcon },
+  { label: "LinkedIn", href: "https://linkedin.com/in/alanfdez-dev", icon: LinkedinLogoIcon },
+  { label: "Email", href: "mailto:alanfdiosdado@gmail.com", icon: EnvelopeSimpleIcon },
 ]
 
 export default function Hero() {
@@ -46,7 +46,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
           >
             Ver proyectos
-            <ArrowRight size={18} weight="bold" />
+            <ArrowRightIcon size={18} weight="bold" />
           </a>
           <a
             href="#contact"
