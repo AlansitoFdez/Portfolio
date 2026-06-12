@@ -1,9 +1,21 @@
-import { ArrowRightIcon, GithubLogoIcon, LinkedinLogoIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/ssr"
+import { ArrowRightIcon, ArrowDownIcon, GithubLogoIcon, LinkedinLogoIcon, EnvelopeSimpleIcon, CodeIcon } from "@phosphor-icons/react/dist/ssr"
+import ScrollReveal from "@/components/common/ScrollReveal"
+import MagneticButton from "@/components/common/MagneticButton"
+import CursorGlow from "@/components/common/CursorGlow"
+import TiltCard from "@/components/common/TiltCard"
 
 const socials = [
   { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogoIcon },
   { label: "LinkedIn", href: "https://linkedin.com/in/alanfdez-dev", icon: LinkedinLogoIcon },
   { label: "Email", href: "mailto:alanfdiosdado@gmail.com", icon: EnvelopeSimpleIcon },
+]
+
+const techStack = [
+  { name: "TypeScript", slug: "typescript" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "Node.js", slug: "nodedotjs" },
+  { name: "Python", slug: "python" },
+  { name: "PostgreSQL", slug: "postgresql" },
 ]
 
 export default function Hero() {
@@ -18,59 +30,125 @@ export default function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-40 top-1/4 h-112 w-md rounded-full bg-violet-600/20 blur-[120px]"
+        className="parallax-blob pointer-events-none absolute -right-40 top-1/4 h-112 w-md rounded-full bg-violet-600/20 blur-[120px]"
       />
+      <div aria-hidden className="noise-overlay pointer-events-none absolute inset-0" />
+      <CursorGlow />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
-        <div className="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-gray-300">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-          Disponible para trabajar
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-7">
+          <ScrollReveal className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-gray-300">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            </span>
+            Disponible para trabajar
+          </ScrollReveal>
+
+          <ScrollReveal delay={80}>
+            <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
+              Alan Fernández Diosdado
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={160}>
+            <p className="mt-3 text-xl font-medium text-violet-400 md:text-2xl">Full Stack Developer</p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={240}>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-400 md:text-lg">
+              Construyo productos web completos, del frontend a la base de datos, combinando
+              desarrollo moderno con inteligencia artificial.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={320} className="mt-10 flex flex-wrap items-center gap-4">
+            <MagneticButton>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
+              >
+                Ver proyectos
+                <ArrowRightIcon size={18} weight="bold" />
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="#contact"
+                className="inline-flex rounded-lg border border-white/10 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-violet-400/60 hover:text-white active:scale-[0.98]"
+              >
+                Hablemos
+              </a>
+            </MagneticButton>
+          </ScrollReveal>
+
+          <ScrollReveal delay={400} className="mt-12 flex items-center gap-5">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={label}
+                className="text-gray-400 transition-all hover:scale-110 hover:text-white"
+              >
+                <Icon size={24} />
+              </a>
+            ))}
+          </ScrollReveal>
         </div>
 
-        <h1 className="animate-fade-up max-w-3xl text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl [animation-delay:80ms]">
-          Alan Fernández Diosdado
-        </h1>
-
-        <p className="animate-fade-up mt-3 text-xl font-medium text-violet-400 md:text-2xl [animation-delay:160ms]">
-          Full Stack Developer
-        </p>
-
-        <p className="animate-fade-up mt-5 max-w-xl text-base leading-relaxed text-gray-400 md:text-lg [animation-delay:240ms]">
-          Construyo productos web completos, del frontend a la base de datos, combinando
-          desarrollo moderno con inteligencia artificial.
-        </p>
-
-        <div className="animate-fade-up mt-10 flex flex-wrap items-center gap-4 [animation-delay:320ms]">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
-          >
-            Ver proyectos
-            <ArrowRightIcon size={18} weight="bold" />
-          </a>
-          <a
-            href="#contact"
-            className="rounded-lg border border-white/10 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-violet-400/60 hover:text-white active:scale-[0.98]"
-          >
-            Hablemos
-          </a>
-        </div>
-
-        <div className="animate-fade-up mt-12 flex items-center gap-5 [animation-delay:400ms]">
-          {socials.map(({ label, href, icon: Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              aria-label={label}
-              className="text-gray-400 transition-all hover:scale-110 hover:text-white"
+        <ScrollReveal delay={240} className="hidden lg:col-span-5 lg:block">
+          <div className="relative">
+            <TiltCard
+              baseRotate={2}
+              className="overflow-hidden rounded-2xl border border-white/10 bg-white/3 p-6 font-mono text-sm leading-relaxed shadow-2xl shadow-black/40 backdrop-blur-sm"
             >
-              <Icon size={24} />
-            </a>
-          ))}
-        </div>
+              <div className="mb-4 flex items-center gap-2 text-xs text-gray-500">
+                <CodeIcon size={14} />
+                profile.ts
+              </div>
+              <code className="block text-gray-300">
+                <span className="text-violet-400">const</span> dev = {"{"}
+                <br />
+                &nbsp;&nbsp;name: <span className="text-emerald-400">&quot;Alan Fernández&quot;</span>,
+                <br />
+                &nbsp;&nbsp;role: <span className="text-emerald-400">&quot;Full Stack Developer&quot;</span>,
+                <br />
+                &nbsp;&nbsp;stack: [<span className="text-emerald-400">&quot;Next.js&quot;</span>, <span className="text-emerald-400">&quot;Node&quot;</span>, <span className="text-emerald-400">&quot;Python&quot;</span>, <span className="text-emerald-400">&quot;Postgres&quot;</span>],
+                <br />
+                &nbsp;&nbsp;available: <span className="text-amber-400">true</span>,
+                <br />
+                {"}"}
+              </code>
+            </TiltCard>
+
+            <div className="absolute -bottom-6 -left-6 -rotate-3 rounded-xl border border-white/10 bg-[#161616] px-4 py-3 shadow-xl">
+              <div className="flex items-center gap-3">
+                {techStack.map(({ name, slug }) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={slug}
+                    src={`https://cdn.simpleicons.org/${slug}/9ca3af`}
+                    alt={name}
+                    width={20}
+                    height={20}
+                    className="opacity-80 transition-all hover:opacity-100 hover:drop-shadow-[0_0_6px_rgba(124,58,237,0.7)]"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
+
+      <a
+        href="#about"
+        aria-label="Ir a la siguiente sección"
+        className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 transition-colors hover:text-white"
+      >
+        <ArrowDownIcon size={20} />
+      </a>
     </section>
   )
 }
