@@ -220,13 +220,14 @@ export default function PillNav({
               const isActive = activeHref === item.href
               const pillStyle: React.CSSProperties = {
                 background: "var(--pill-bg, #fff)",
-                color: "var(--pill-text, var(--base, #000))",
+                color: isActive ? "var(--base, #fff)" : "var(--pill-text, var(--base, #000))",
                 paddingLeft: "var(--pill-pad-x)",
                 paddingRight: "var(--pill-pad-x)",
+                boxShadow: isActive ? "inset 0 0 0 1.5px var(--base)" : undefined,
               }
 
               return (
-                <li key={item.href} role="none" className="flex h-full">
+                <li key={item.href} role="none" className="relative flex h-full">
                   <a
                     role="menuitem"
                     href={item.href}
@@ -256,13 +257,6 @@ export default function PillNav({
                         {item.label}
                       </span>
                     </span>
-                    {isActive && (
-                      <span
-                        className="absolute -bottom-1.5 left-1/2 z-[4] h-1.5 w-1.5 -translate-x-1/2 rounded-full"
-                        style={{ background: "var(--base, #000)" }}
-                        aria-hidden="true"
-                      />
-                    )}
                   </a>
                 </li>
               )
