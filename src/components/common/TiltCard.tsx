@@ -46,8 +46,9 @@ export default function TiltCard({ children, className = "", baseRotate = 0 }: T
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       style={style}
-      className={`relative transition-transform duration-200 ease-out [transform-style:preserve-3d] ${className}`}
+      className={`relative transition-transform duration-200 ease-out transform-3d ${className}`}
     >
+      {children}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
@@ -57,7 +58,6 @@ export default function TiltCard({ children, className = "", baseRotate = 0 }: T
             "radial-gradient(250px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(124, 58, 237, 0.25), transparent 70%)",
         }}
       />
-      {children}
     </div>
   )
 }

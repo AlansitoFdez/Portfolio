@@ -3,6 +3,9 @@ import ScrollReveal from "@/components/common/ScrollReveal"
 import MagneticButton from "@/components/common/MagneticButton"
 import CursorGlow from "@/components/common/CursorGlow"
 import TiltCard from "@/components/common/TiltCard"
+import RoleTypewriter from "@/components/common/RoleTypewriter"
+import ScrambleName from "@/components/common/ScrambleName"
+import SpotlightWrapper from "@/components/common/SpotlightWrapper"
 
 const socials = [
   { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogoIcon },
@@ -45,32 +48,34 @@ export default function Hero() {
             Disponible para trabajar
           </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
-              Alan Fernández Diosdado
-            </h1>
+          <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
+            <ScrambleName words={["Alan", "Fernández", "Diosdado"]} />
+          </h1>
+
+          <ScrollReveal delay={320}>
+            <p className="mt-3 text-xl font-medium text-violet-400 md:text-2xl">
+              <RoleTypewriter />
+            </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={160}>
-            <p className="mt-3 text-xl font-medium text-violet-400 md:text-2xl">Full Stack Developer</p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={240}>
+          <ScrollReveal delay={400}>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-400 md:text-lg">
               Construyo productos web completos, del frontend a la base de datos, combinando
               desarrollo moderno con inteligencia artificial.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={320} className="mt-10 flex flex-wrap items-center gap-4">
+          <ScrollReveal delay={480} className="mt-10 flex flex-wrap items-center gap-4">
             <MagneticButton>
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
-              >
-                Ver proyectos
-                <ArrowRightIcon size={18} weight="bold" />
-              </a>
+              <SpotlightWrapper className="rounded-lg">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
+                >
+                  Ver proyectos
+                  <ArrowRightIcon size={18} weight="bold" />
+                </a>
+              </SpotlightWrapper>
             </MagneticButton>
             <MagneticButton>
               <a
@@ -82,45 +87,53 @@ export default function Hero() {
             </MagneticButton>
           </ScrollReveal>
 
-          <ScrollReveal delay={400} className="mt-12 flex items-center gap-5">
+          <ScrollReveal delay={560} className="mt-12 flex items-center gap-5">
             {socials.map(({ label, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="text-gray-400 transition-all hover:scale-110 hover:text-white"
-              >
-                <Icon size={24} />
-              </a>
+              <div key={label} className="group relative">
+                <a
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={label}
+                  className="text-gray-400 transition-all hover:scale-110 hover:text-white"
+                >
+                  <Icon size={24} />
+                </a>
+                <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 whitespace-nowrap rounded-md border border-white/10 bg-[#161616] px-2 py-1 text-xs text-gray-300 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                  {label}
+                </span>
+              </div>
             ))}
           </ScrollReveal>
         </div>
 
         <ScrollReveal delay={240} className="hidden lg:col-span-5 lg:block">
           <div className="relative">
-            <TiltCard
-              baseRotate={2}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-white/3 p-6 font-mono text-sm leading-relaxed shadow-2xl shadow-black/40 backdrop-blur-sm"
-            >
-              <div className="mb-4 flex items-center gap-2 text-xs text-gray-500">
-                <CodeIcon size={14} />
-                profile.ts
+            <TiltCard baseRotate={2} className="overflow-hidden rounded-2xl p-px">
+              <div
+                aria-hidden
+                className="chroma-spin absolute -inset-1/2 bg-[conic-gradient(from_0deg,transparent_0deg,rgba(124,58,237,0.9)_90deg,transparent_180deg)]"
+              />
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0f0f0f] p-6 font-mono text-sm leading-relaxed shadow-2xl shadow-black/40">
+                <div className="mb-4 flex items-center gap-2 text-xs text-gray-500">
+                  <CodeIcon size={14} />
+                  profile.ts
+                </div>
+                <code className="block text-gray-300">
+                  <span className="text-violet-400">const</span> dev = {"{"}
+                  <br />
+                  &nbsp;&nbsp;name: <span className="text-emerald-400">&quot;Alan Fernández&quot;</span>,
+                  <br />
+                  &nbsp;&nbsp;role: <span className="text-emerald-400">&quot;Full Stack Developer&quot;</span>,
+                  <br />
+                  &nbsp;&nbsp;stack: [<span className="text-emerald-400">&quot;Next.js&quot;</span>, <span className="text-emerald-400">&quot;Node&quot;</span>, <span className="text-emerald-400">&quot;Python&quot;</span>, <span className="text-emerald-400">&quot;Postgres&quot;</span>],
+                  <br />
+                  &nbsp;&nbsp;available: <span className="text-amber-400">true</span>,
+                  <br />
+                  {"}"}
+                  <span className="terminal-cursor">|</span>
+                </code>
               </div>
-              <code className="block text-gray-300">
-                <span className="text-violet-400">const</span> dev = {"{"}
-                <br />
-                &nbsp;&nbsp;name: <span className="text-emerald-400">&quot;Alan Fernández&quot;</span>,
-                <br />
-                &nbsp;&nbsp;role: <span className="text-emerald-400">&quot;Full Stack Developer&quot;</span>,
-                <br />
-                &nbsp;&nbsp;stack: [<span className="text-emerald-400">&quot;Next.js&quot;</span>, <span className="text-emerald-400">&quot;Node&quot;</span>, <span className="text-emerald-400">&quot;Python&quot;</span>, <span className="text-emerald-400">&quot;Postgres&quot;</span>],
-                <br />
-                &nbsp;&nbsp;available: <span className="text-amber-400">true</span>,
-                <br />
-                {"}"}
-              </code>
             </TiltCard>
 
             <div className="absolute -bottom-6 -left-6 -rotate-3 rounded-xl border border-white/10 bg-[#161616] px-4 py-3 shadow-xl">
