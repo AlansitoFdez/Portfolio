@@ -4,6 +4,7 @@ import About from "@/components/ui/About";
 import Projects from "@/components/ui/Projects";
 import Skills from "@/components/ui/Skills";
 import Contact from "@/components/ui/Contact";
+import BackToTop from "@/components/common/BackToTop";
 
 export default function Home() {
   return (
@@ -14,6 +15,10 @@ export default function Home() {
       <Projects />
       <Skills />
       <Contact />
+      <footer className="px-6 py-8 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} Alan Fernández Diosdado
+      </footer>
+      <BackToTop />
     </main>
   );
 }
