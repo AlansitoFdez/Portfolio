@@ -22,22 +22,6 @@ export default function Navbar() {
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-
-        if (visible) setActiveHref(`#${visible.target.id}`)
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    )
-
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
     let lastY = window.scrollY
 
     const onScroll = () => {
@@ -45,8 +29,20 @@ export default function Navbar() {
       setScrolled(y > 10)
       setHidden(y > lastY && y > 100)
       lastY = y
+
+      const offset = window.innerHeight * 0.3
+
+      let current = sections[0]
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top - offset <= 0) {
+          current = section
+        }
+      }
+
+      if (current) setActiveHref(`#${current.id}`)
     }
 
+    onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
