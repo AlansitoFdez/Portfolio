@@ -62,6 +62,15 @@ export const dictionary = {
         },
       ],
     },
+    skills: {
+      techCount: "tecnologías",
+      categories: {
+        frontend: "Frontend",
+        backend: "Backend",
+        database: "Base de datos",
+        devops: "DevOps",
+      },
+    },
   },
   en: {
     hero: {
@@ -124,6 +133,15 @@ export const dictionary = {
             "Extension of Cinesfera with a persistent memory system that improves recommendations over time using retrieval-augmented generation (RAG).",
         },
       ],
+    },
+    skills: {
+      techCount: "technologies",
+      categories: {
+        frontend: "Frontend",
+        backend: "Backend",
+        database: "Database",
+        devops: "DevOps",
+      },
     },
   },
 } as const

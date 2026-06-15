@@ -1,20 +1,23 @@
+"use client"
+
 import { CodeIcon, MonitorIcon, HardDrivesIcon, DatabaseIcon, GearSixIcon } from "@phosphor-icons/react/dist/ssr"
 import ScrollReveal from "@/components/common/ScrollReveal"
 import TiltCard from "@/components/common/TiltCard"
 import CountUp from "@/components/common/CountUp"
+import { useTranslation } from "@/components/common/LanguageProvider"
 
 const skills = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  Backend: ["Node.js", "Express", "Python", "FastAPI"],
-  "Base de datos": ["PostgreSQL", "MongoDB", "pgvector"],
-  DevOps: ["Git", "GitHub", "Vercel", "Render", "Docker"],
+  frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+  backend: ["Node.js", "Express", "Python", "FastAPI"],
+  database: ["PostgreSQL", "MongoDB", "pgvector"],
+  devops: ["Git", "GitHub", "Vercel", "Render", "Docker"],
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  Frontend: <MonitorIcon size={16} weight="bold" />,
-  Backend: <HardDrivesIcon size={16} weight="bold" />,
-  "Base de datos": <DatabaseIcon size={16} weight="bold" />,
-  DevOps: <GearSixIcon size={16} weight="bold" />,
+  frontend: <MonitorIcon size={16} weight="bold" />,
+  backend: <HardDrivesIcon size={16} weight="bold" />,
+  database: <DatabaseIcon size={16} weight="bold" />,
+  devops: <GearSixIcon size={16} weight="bold" />,
 }
 
 const totalSkills = Object.values(skills).reduce((sum, items) => sum + items.length, 0)
@@ -40,6 +43,8 @@ const skillIcons: Record<string, string> = {
 }
 
 export default function Skills() {
+  const { skills: t } = useTranslation()
+
   return (
     <section id="skills" className="relative overflow-hidden px-6 py-24">
       <div
@@ -55,7 +60,7 @@ export default function Skills() {
         <ScrollReveal className="flex items-baseline gap-3">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Skills</h2>
           <span className="text-sm text-gray-400">
-            <CountUp to={totalSkills} suffix="+" /> tecnologías
+            <CountUp to={totalSkills} suffix="+" /> {t.techCount}
           </span>
         </ScrollReveal>
 
@@ -65,7 +70,7 @@ export default function Skills() {
               <TiltCard className="rounded-xl border border-white/10 bg-white/5 p-5">
                 <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-violet-400">
                   {categoryIcons[category]}
-                  {category}
+                  {t.categories[category as keyof typeof t.categories]}
                 </h3>
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {items.map((skill) => (
