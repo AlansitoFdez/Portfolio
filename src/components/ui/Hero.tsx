@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowRightIcon, ArrowDownIcon, GithubLogoIcon, LinkedinLogoIcon, EnvelopeSimpleIcon, CodeIcon } from "@phosphor-icons/react/dist/ssr"
 import ScrollReveal from "@/components/common/ScrollReveal"
 import MagneticButton from "@/components/common/MagneticButton"
@@ -6,6 +8,7 @@ import TiltCard from "@/components/common/TiltCard"
 import RoleTypewriter from "@/components/common/RoleTypewriter"
 import ScrambleName from "@/components/common/ScrambleName"
 import SpotlightWrapper from "@/components/common/SpotlightWrapper"
+import { useTranslation } from "@/components/common/LanguageProvider"
 
 const socials = [
   { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogoIcon },
@@ -22,6 +25,8 @@ const techStack = [
 ]
 
 export default function Hero() {
+  const { hero: t } = useTranslation()
+
   return (
     <section
       id="hero"
@@ -45,7 +50,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            Disponible para trabajar
+            {t.badge}
           </ScrollReveal>
 
           <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
@@ -60,8 +65,7 @@ export default function Hero() {
 
           <ScrollReveal delay={400}>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-gray-400 md:text-lg">
-              Construyo productos web completos, del frontend a la base de datos, combinando
-              desarrollo moderno con inteligencia artificial.
+              {t.description}
             </p>
           </ScrollReveal>
 
@@ -72,7 +76,7 @@ export default function Hero() {
                   href="#projects"
                   className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
                 >
-                  Ver proyectos
+                  {t.ctaProjects}
                   <ArrowRightIcon size={18} weight="bold" />
                 </a>
               </SpotlightWrapper>
@@ -82,7 +86,7 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex rounded-lg border border-white/10 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-violet-400/60 hover:text-white active:scale-[0.98]"
               >
-                Hablemos
+                {t.ctaContact}
               </a>
             </MagneticButton>
           </ScrollReveal>
@@ -157,7 +161,7 @@ export default function Hero() {
 
       <a
         href="#about"
-        aria-label="Ir a la siguiente sección"
+        aria-label={t.nextSection}
         className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 transition-colors hover:text-white"
       >
         <ArrowDownIcon size={20} />
