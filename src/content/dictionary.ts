@@ -1,5 +1,15 @@
 export const dictionary = {
   es: {
+    nav: {
+      about: "Sobre mí",
+      projects: "Proyectos",
+      skills: "Skills",
+      contact: "Contacto",
+      home: "Inicio",
+      menu: "Abrir menú",
+      primary: "Principal",
+      backToTop: "Volver arriba",
+    },
     hero: {
       badge: "Disponible para trabajar",
       description:
@@ -80,6 +90,16 @@ export const dictionary = {
     },
   },
   en: {
+    nav: {
+      about: "About",
+      projects: "Projects",
+      skills: "Skills",
+      contact: "Contact",
+      home: "Home",
+      menu: "Open menu",
+      primary: "Primary",
+      backToTop: "Back to top",
+    },
     hero: {
       badge: "Available for work",
       description:

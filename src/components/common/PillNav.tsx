@@ -22,6 +22,9 @@ export interface PillNavProps {
   hoveredPillTextColor?: string
   pillTextColor?: string
   initialLoadAnimation?: boolean
+  homeAriaLabel?: string
+  menuAriaLabel?: string
+  navAriaLabel?: string
 }
 
 export default function PillNav({
@@ -37,6 +40,9 @@ export default function PillNav({
   hoveredPillTextColor = "#120F17",
   pillTextColor,
   initialLoadAnimation = true,
+  homeAriaLabel = "Home",
+  menuAriaLabel = "Open menu",
+  navAriaLabel = "Primary",
 }: PillNavProps) {
   const resolvedPillTextColor = pillTextColor ?? baseColor
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -197,11 +203,11 @@ export default function PillNav({
     <div className={`relative w-full md:w-auto ${className}`} style={cssVars}>
       <nav
         className="box-border flex w-full items-center justify-between gap-2 md:w-max md:justify-start"
-        aria-label="Principal"
+        aria-label={navAriaLabel}
       >
         <a
           href={homeHref}
-          aria-label="Inicio"
+          aria-label={homeAriaLabel}
           onMouseEnter={handleLogoEnter}
           ref={logoRef}
           className="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full p-2"
@@ -267,7 +273,7 @@ export default function PillNav({
         <button
           ref={hamburgerRef}
           onClick={toggleMobileMenu}
-          aria-label="Abrir menú"
+          aria-label={menuAriaLabel}
           aria-expanded={isMobileMenuOpen}
           className="flex shrink-0 cursor-pointer flex-col items-center justify-center gap-1 rounded-full border-0 p-0 md:hidden"
           style={{ width: "var(--nav-h)", height: "var(--nav-h)", background: "var(--base, #000)" }}

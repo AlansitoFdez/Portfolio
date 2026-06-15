@@ -3,17 +3,19 @@
 import { useEffect, useState } from "react"
 import PillNav from "@/components/common/PillNav"
 import LanguageToggle from "@/components/common/LanguageToggle"
-
-const items = [
-  { label: "Sobre mí", href: "#about" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contacto", href: "#contact" },
-]
+import { useTranslation } from "@/components/common/LanguageProvider"
 
 const sectionIds = ["hero", "about", "projects", "skills", "contact"]
 
 export default function Navbar() {
+  const { nav: t } = useTranslation()
+  const items = [
+    { label: t.about, href: "#about" },
+    { label: t.projects, href: "#projects" },
+    { label: t.skills, href: "#skills" },
+    { label: t.contact, href: "#contact" },
+  ]
+
   const [activeHref, setActiveHref] = useState("")
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -69,6 +71,9 @@ export default function Navbar() {
           pillColor="#0f0f0f"
           pillTextColor="#a1a1aa"
           hoveredPillTextColor="#ffffff"
+          navAriaLabel={t.primary}
+          homeAriaLabel={t.home}
+          menuAriaLabel={t.menu}
         />
         <LanguageToggle />
       </div>
