@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import PillNav from "@/components/common/PillNav"
+import LanguageToggle from "@/components/common/LanguageToggle"
 
 const items = [
   { label: "Sobre mí", href: "#about" },
@@ -54,7 +55,7 @@ export default function Navbar() {
       }`}
     >
       <div
-        className={`rounded-full p-1 transition-all duration-300 ${
+        className={`flex items-center gap-2 rounded-full p-1 transition-all duration-300 ${
           scrolled ? "bg-[#0f0f0f]/60 shadow-lg shadow-black/20 ring-1 ring-white/10 backdrop-blur-md" : ""
         }`}
       >
@@ -69,6 +70,7 @@ export default function Navbar() {
           pillTextColor="#a1a1aa"
           hoveredPillTextColor="#ffffff"
         />
+        <LanguageToggle />
       </div>
     </header>
   )
