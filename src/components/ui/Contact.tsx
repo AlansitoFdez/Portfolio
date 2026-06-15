@@ -1,6 +1,9 @@
+"use client"
+
 import { EnvelopeSimpleIcon, GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr"
 import ScrollReveal from "@/components/common/ScrollReveal"
 import ScrambleText from "@/components/common/ScrambleText"
+import { useTranslation } from "@/components/common/LanguageProvider"
 
 const socials = [
   { label: "GitHub", href: "https://github.com/AlansitoFdez", icon: GithubLogoIcon },
@@ -8,6 +11,8 @@ const socials = [
 ]
 
 export default function Contact() {
+  const { contact: t } = useTranslation()
+
   return (
     <section id="contact" className="relative overflow-hidden px-6 py-24">
       <div
@@ -25,19 +30,16 @@ export default function Contact() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          Disponible para trabajar
+          {t.badge}
         </ScrollReveal>
 
         <ScrollReveal>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            <ScrambleText text="¿Hablamos?" />
+            <ScrambleText text={t.title} />
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={80}>
-          <p className="mt-4 text-lg text-gray-400">
-            Estoy buscando mi primer empleo como desarrollador. Si tienes un proyecto o una oportunidad,
-            escríbeme.
-          </p>
+          <p className="mt-4 text-lg text-gray-400">{t.description}</p>
         </ScrollReveal>
 
         <ScrollReveal delay={160} className="mt-10">
@@ -46,7 +48,7 @@ export default function Contact() {
             className="inline-flex items-center gap-2 rounded-lg bg-violet-600 px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-violet-700 active:scale-[0.98]"
           >
             <EnvelopeSimpleIcon size={20} weight="bold" />
-            Envíame un email
+            {t.cta}
           </a>
         </ScrollReveal>
 

@@ -71,6 +71,13 @@ export const dictionary = {
         devops: "DevOps",
       },
     },
+    contact: {
+      badge: "Disponible para trabajar",
+      title: "¿Hablamos?",
+      description:
+        "Estoy buscando mi primer empleo como desarrollador. Si tienes un proyecto o una oportunidad, escríbeme.",
+      cta: "Envíame un email",
+    },
   },
   en: {
     hero: {
@@ -142,6 +149,13 @@ export const dictionary = {
         database: "Database",
         devops: "DevOps",
       },
+    },
+    contact: {
+      badge: "Available for work",
+      title: "Let's talk?",
+      description:
+        "I'm looking for my first job as a developer. If you have a project or an opportunity, get in touch.",
+      cta: "Send me an email",
     },
   },
 } as const
