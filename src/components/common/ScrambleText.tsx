@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÑabcdefghijklmnopqrstuvwxyz"
 
@@ -19,6 +19,10 @@ interface ScrambleTextProps {
 export default function ScrambleText({ text, className = "" }: ScrambleTextProps) {
   const [display, setDisplay] = useState(text)
   const animating = useRef(false)
+
+  useEffect(() => {
+    if (!animating.current) setDisplay(text)
+  }, [text])
 
   const handleEnter = () => {
     if (animating.current) return
