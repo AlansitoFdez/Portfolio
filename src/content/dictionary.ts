@@ -45,6 +45,23 @@ export const dictionary = {
         { title: "Enfoque", description: "Desarrollo web moderno combinado con inteligencia artificial" },
       ],
     },
+    projects: {
+      title: "Proyectos",
+      wip: "En construcción",
+      code: "Código",
+      items: [
+        {
+          title: "Cinesfera",
+          description:
+            "Red social cinematográfica con búsqueda de películas y series, sistema de reseñas, listas personalizadas, seguimiento de usuarios y recomendaciones personalizadas mediante IA.",
+        },
+        {
+          title: "RAG para Cinesfera",
+          description:
+            "Extensión de Cinesfera con sistema de memoria persistente que mejora las recomendaciones con el tiempo usando recuperación aumentada por generación (RAG).",
+        },
+      ],
+    },
   },
   en: {
     hero: {
@@ -89,6 +106,23 @@ export const dictionary = {
           description: "Internship developing a web platform for a VR training company",
         },
         { title: "Focus", description: "Modern web development combined with artificial intelligence" },
+      ],
+    },
+    projects: {
+      title: "Projects",
+      wip: "In progress",
+      code: "Code",
+      items: [
+        {
+          title: "Cinesfera",
+          description:
+            "Movie social network with search for films and shows, a review system, custom lists, user following and AI-powered personalized recommendations.",
+        },
+        {
+          title: "RAG for Cinesfera",
+          description:
+            "Extension of Cinesfera with a persistent memory system that improves recommendations over time using retrieval-augmented generation (RAG).",
+        },
       ],
     },
   },

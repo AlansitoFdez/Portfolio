@@ -1,8 +1,11 @@
+"use client"
+
 import { ArrowRightIcon, ArrowUpRightIcon, GithubLogoIcon } from "@phosphor-icons/react/dist/ssr"
 import { projects } from "@/content/projects"
 import ScrollReveal from "@/components/common/ScrollReveal"
 import TiltCard from "@/components/common/TiltCard"
 import ScrambleText from "@/components/common/ScrambleText"
+import { useTranslation } from "@/components/common/LanguageProvider"
 
 const techIcons: Record<string, string> = {
   React: "react",
@@ -18,6 +21,8 @@ const techIcons: Record<string, string> = {
 }
 
 export default function Projects() {
+  const { projects: t } = useTranslation()
+
   return (
     <section id="projects" className="relative overflow-hidden px-6 py-24">
       <div
@@ -31,7 +36,7 @@ export default function Projects() {
 
       <div className="relative z-10 mx-auto max-w-5xl">
         <ScrollReveal>
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Proyectos</h2>
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">{t.title}</h2>
         </ScrollReveal>
 
         <div className="mt-12 flex flex-col divide-y divide-white/10">
@@ -50,7 +55,7 @@ export default function Projects() {
                 <div className="flex flex-col gap-4">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="text-2xl font-semibold text-white md:text-3xl">
-                      <ScrambleText text={project.title} />
+                      <ScrambleText text={t.items[index].title} />
                     </h3>
                     {project.wip && (
                       <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-violet-500/10 px-2.5 py-1 text-xs font-medium text-violet-400">
@@ -58,7 +63,7 @@ export default function Projects() {
                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75" />
                           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-violet-400" />
                         </span>
-                        En construcción
+                        {t.wip}
                       </span>
                     )}
                     {!project.wip && project.demo && (
@@ -72,7 +77,7 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <p className="max-w-2xl text-base leading-relaxed text-gray-400">{project.description}</p>
+                  <p className="max-w-2xl text-base leading-relaxed text-gray-400">{t.items[index].description}</p>
 
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
@@ -100,7 +105,7 @@ export default function Projects() {
                         className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-300 transition-colors hover:text-white"
                       >
                         <GithubLogoIcon size={16} weight="bold" />
-                        Código
+                        {t.code}
                       </a>
                     )}
                     {project.demo && (
