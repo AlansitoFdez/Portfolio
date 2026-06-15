@@ -1,34 +1,23 @@
+"use client"
+
 import { GraduationCapIcon, BuildingsIcon, SparkleIcon } from "@phosphor-icons/react/dist/ssr"
 import ScrollReveal from "@/components/common/ScrollReveal"
 import CountUp from "@/components/common/CountUp"
 import Timeline from "@/components/common/Timeline"
 import ScrambleText from "@/components/common/ScrambleText"
+import { useTranslation } from "@/components/common/LanguageProvider"
 
-const highlights = [
-  {
-    icon: <GraduationCapIcon size={16} weight="bold" />,
-    title: "Formación",
-    description: "Desarrollo de Aplicaciones Multiplataforma",
-  },
-  {
-    icon: <BuildingsIcon size={16} weight="bold" />,
-    title: "Experiencia",
-    description: "Prácticas desarrollando una plataforma web para una empresa de formación en VR",
-  },
-  {
-    icon: <SparkleIcon size={16} weight="bold" />,
-    title: "Enfoque",
-    description: "Desarrollo web moderno combinado con inteligencia artificial",
-  },
+const highlightIcons = [
+  <GraduationCapIcon key="education" size={16} weight="bold" />,
+  <BuildingsIcon key="experience" size={16} weight="bold" />,
+  <SparkleIcon key="focus" size={16} weight="bold" />,
 ]
 
-const stats = [
-  { value: 16, suffix: "+", label: "Tecnologías" },
-  { value: 2, suffix: "", label: "Proyectos" },
-  { value: 1, suffix: "+", label: "Año de experiencia" },
-]
+const statValues = [16, 2, 1]
 
 export default function About() {
+  const { about: t } = useTranslation()
+
   return (
     <section id="about" className="relative overflow-hidden px-6 py-24">
       <div
@@ -47,38 +36,28 @@ export default function About() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-violet-400" />
             </span>
-            Aprendiendo ahora: RAG &amp; LLMs
+            {t.badge}
           </ScrollReveal>
           <ScrollReveal>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              <ScrambleText text="Sobre mí" />
+              <ScrambleText text={t.title} />
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={80} className="mt-6 space-y-4 text-lg leading-relaxed text-gray-400">
-            <p>
-              Soy un desarrollador{" "}
-              <span className="font-semibold text-violet-300">Fullstack Junior</span> recién
-              graduado, apasionado por construir productos web completos, desde la interfaz hasta
-              la base de datos.
-            </p>
-            <p>
-              Durante mis prácticas desarrollé una plataforma web completa desde cero. Esa
-              experiencia me enseñó a trabajar con código real, en{" "}
-              <span className="font-semibold text-violet-300">producción</span>, con plazos
-              reales.
-            </p>
-            <p>
-              Actualmente busco mi primer empleo como desarrollador mientras sigo construyendo
-              proyectos que combinan desarrollo web moderno con{" "}
-              <span className="font-semibold text-violet-300">inteligencia artificial</span>.
-            </p>
+            {t.paragraphs.map(({ before, highlight, after }) => (
+              <p key={highlight}>
+                {before}
+                <span className="font-semibold text-violet-300">{highlight}</span>
+                {after}
+              </p>
+            ))}
           </ScrollReveal>
 
           <ScrollReveal delay={240} className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
-            {stats.map(({ value, suffix, label }) => (
+            {t.stats.map(({ suffix, label }, index) => (
               <div key={label}>
                 <p className="text-3xl font-bold text-white md:text-4xl">
-                  <CountUp to={value} suffix={suffix} />
+                  <CountUp to={statValues[index]} suffix={suffix} />
                 </p>
                 <p className="mt-1 text-sm text-gray-400">{label}</p>
               </div>
@@ -86,7 +65,9 @@ export default function About() {
           </ScrollReveal>
         </div>
 
-        <Timeline items={highlights} />
+        <Timeline
+          items={t.highlights.map((highlight, index) => ({ ...highlight, icon: highlightIcons[index] }))}
+        />
       </div>
     </section>
   )

@@ -8,6 +8,43 @@ export const dictionary = {
       ctaContact: "Hablemos",
       nextSection: "Ir a la siguiente sección",
     },
+    about: {
+      badge: "Aprendiendo ahora: RAG & LLMs",
+      title: "Sobre mí",
+      paragraphs: [
+        {
+          before: "Soy un desarrollador ",
+          highlight: "Fullstack Junior",
+          after:
+            " recién graduado, apasionado por construir productos web completos, desde la interfaz hasta la base de datos.",
+        },
+        {
+          before:
+            "Durante mis prácticas desarrollé una plataforma web completa desde cero. Esa experiencia me enseñó a trabajar con código real, en ",
+          highlight: "producción",
+          after: ", con plazos reales.",
+        },
+        {
+          before:
+            "Actualmente busco mi primer empleo como desarrollador mientras sigo construyendo proyectos que combinan desarrollo web moderno con ",
+          highlight: "inteligencia artificial",
+          after: ".",
+        },
+      ],
+      stats: [
+        { suffix: "+", label: "Tecnologías" },
+        { suffix: "", label: "Proyectos" },
+        { suffix: "+", label: "Año de experiencia" },
+      ],
+      highlights: [
+        { title: "Formación", description: "Desarrollo de Aplicaciones Multiplataforma" },
+        {
+          title: "Experiencia",
+          description: "Prácticas desarrollando una plataforma web para una empresa de formación en VR",
+        },
+        { title: "Enfoque", description: "Desarrollo web moderno combinado con inteligencia artificial" },
+      ],
+    },
   },
   en: {
     hero: {
@@ -17,6 +54,42 @@ export const dictionary = {
       ctaProjects: "View projects",
       ctaContact: "Let's talk",
       nextSection: "Go to next section",
+    },
+    about: {
+      badge: "Currently learning: RAG & LLMs",
+      title: "About me",
+      paragraphs: [
+        {
+          before: "I'm a recently graduated ",
+          highlight: "Fullstack Junior",
+          after: " developer, passionate about building complete web products, from the interface to the database.",
+        },
+        {
+          before:
+            "During my internship I built a full web platform from scratch. That experience taught me to work with real code, in ",
+          highlight: "production",
+          after: ", with real deadlines.",
+        },
+        {
+          before:
+            "I'm currently looking for my first job as a developer while continuing to build projects that combine modern web development with ",
+          highlight: "artificial intelligence",
+          after: ".",
+        },
+      ],
+      stats: [
+        { suffix: "+", label: "Technologies" },
+        { suffix: "", label: "Projects" },
+        { suffix: "+", label: "Year of experience" },
+      ],
+      highlights: [
+        { title: "Education", description: "Multiplatform Application Development" },
+        {
+          title: "Experience",
+          description: "Internship developing a web platform for a VR training company",
+        },
+        { title: "Focus", description: "Modern web development combined with artificial intelligence" },
+      ],
     },
   },
 } as const
